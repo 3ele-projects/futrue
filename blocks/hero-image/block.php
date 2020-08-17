@@ -41,7 +41,7 @@ $col_align = get_field('align');
 $headline = get_field('headline');
 $subheadline = get_field('subheadline');
 $description = get_field('description');
-$blockimage = get_field('block_image');
+$ background-image = get_field(' background-image');
 $font_color = get_field('font-color');
 $anker_id = get_field('anker_id');
 
@@ -71,7 +71,7 @@ $anker_id = get_field('anker_id');
  ?>
   </section>   
     <style type="text/css">
-        #<?php echo $id; ?> {
+        #<?php echo esc_attr($anker_id); ?> {
             background: <?php echo $background_color; ?>;
             width:100%;
      
