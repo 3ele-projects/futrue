@@ -41,12 +41,12 @@ $col_align = get_field('align');
 $headline = get_field('headline');
 $subheadline = get_field('subheadline');
 $description = get_field('description');
-$background-image = get_field(' background-image');
+$background_image = get_field('background-image');
 $font_color = get_field('font-color');
 $anker_id = get_field('anker_id');
 
 ?>
-<section id="<?php echo esc_attr($anker_id); ?>" class="hero-image <?php echo esc_attr($className); ?>">
+<section id="<?php echo esc_attr( $id); ?>" class="hero-image <?php echo esc_attr($className); ?>">
 <div id="particles-js"></div>
 
   <div class="container">
@@ -71,7 +71,7 @@ $anker_id = get_field('anker_id');
  ?>
   </section>   
     <style type="text/css">
-        #<?php echo esc_attr($anker_id); ?> {
+        #<?php echo $id; ?> {
             background: <?php echo $background_color; ?>;
             width:100%;
      
