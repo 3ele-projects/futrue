@@ -1,12 +1,9 @@
 // Custom.scss
 $blue:    #00B4FF !default;
 $green:   #007056 !default;
-
-
 $primary:       $blue !default;
 $secondary:    #00B4FF!default;
 $font-family: 'Assistant', sans-serif;
-
 
 @import "../assets/bootstrap/scss/functions";
 @import "../assets/bootstrap/scss/variables";
@@ -198,14 +195,26 @@ h2 {
 }
 
  .testimonial-wrapper .container .swiper-container .swiper-wrapper .testimonial {
+     background:none;
+     border:none;
      .card-header {
-display:flex;
-.card-header-text {
-    margin-left:auto;
-    text-align:right;
-    display:flex;
-    	flex-direction: column;
-        align-content: center;
+        display:flex;
+        background:none;
+        min-height:6em;
+    .card-header-text {
+            margin-left:auto;
+            text-align:right;
+            display:flex;
+            flex-direction: column;
+            align-content: center;
+            color:$white;
+div {
+    margin-top:auto;
+}
+        small {
+ 
+            margin-bottom:auto;
+        }
 }
      }
 
@@ -236,6 +245,62 @@ display:flex;
 }
 
  }
+
+
+ .block-job .block-header {
+           display:flex;
+           flex-direction: column;
+           flex-wrap:wrap;
+           justify-content: space-around;
+           align-items: center;
+           margin-bottom:2em;
+          
+     .description {
+         background:$white;
+         padding: 20px 20px 20px 20px;
+         position:relative;
+         color:$black;
+         width:100%;
+         margin-bottom: 0.5em;
+
+   p {
+    color:$black;   
+   }
+     
+     }
+     .description::after {
+             content: "";
+    display: block;
+    width: 14px;
+    height: 14px;
+    background-color: $white;
+    position: absolute;
+    -webkit-transform: scaleX(.75) rotate(45deg);
+    -ms-transform: scaleX(.75) rotate(45deg);
+    transform: scaleX(.75) rotate(45deg);
+    border-width: 0;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    left: 50%;
+    top: calc(100% - 7px);
+    transform: translateX(-50%) scaleX(.75) rotate(-135deg);
+    
+}
+     .block-image {
+         margin-left:auto;
+         margin-right:auto;
+         margin: 1em;
+  
+	border-radius: 50%;
+
+
+     }
+    
+     
+  
+
+     }
+
 
 
 

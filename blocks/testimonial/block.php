@@ -54,7 +54,7 @@ $anker_id = get_field('anker_id');
       <div class="card-header">
      <img src="<?php the_field('image', get_the_ID()); ?>" class="t-image" /> 
     <div class="card-header-text">
-    <p><?php the_title(); ?></p>
+    <div><?php the_title(); ?></div>
    <small> <?php the_field('position', get_the_ID()); ?></small>
   </div>
   </div>
@@ -82,8 +82,8 @@ $anker_id = get_field('anker_id');
     },
     // when window width is >= 640px
     640: {
-      slidesPerView: 2.2,
-      spaceBetween: 10,
+      slidesPerView: 3,
+      spaceBetween: 20,
     }
       },
    

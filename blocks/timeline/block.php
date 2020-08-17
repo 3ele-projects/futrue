@@ -42,6 +42,7 @@ $anker_id = get_field('anker_id');
         <style type="text/css">
         #<?php echo $id; ?> {
             background: <?php echo $background_color; ?>; 
+            color: <?php echo $font_color; ?>!important;
         }
         #<?php echo $id; ?> .block-header .description,
         #<?php echo $id; ?> .block-header .subheadline,
@@ -62,10 +63,10 @@ $anker_id = get_field('anker_id');
 		<?php while ( have_rows( 'timeline' ) ) : the_row(); ?>
         <div class="row">
         <div class="col-sm-3">
-			<?php the_sub_field( 'year' ); ?>
+		<p>	<?php the_sub_field( 'year' ); ?></p>
             </div>
             <div class="col-sm-9">
-			<?php the_sub_field( 'event' ); ?>
+			<p><?php the_sub_field( 'event' ); ?></p>
             </div>
             </div>
 		<?php endwhile; ?>

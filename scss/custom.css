@@ -6602,36 +6602,84 @@ a.text-dark:hover, a.text-dark:focus {
     text-align: center;
     color: #fff; }
 
-.testimonial-wrapper .container .swiper-container .swiper-wrapper .testimonial .card-header {
-  display: flex; }
-  .testimonial-wrapper .container .swiper-container .swiper-wrapper .testimonial .card-header .card-header-text {
-    margin-left: auto;
-    text-align: right;
+.testimonial-wrapper .container .swiper-container .swiper-wrapper .testimonial {
+  background: none;
+  border: none; }
+  .testimonial-wrapper .container .swiper-container .swiper-wrapper .testimonial .card-header {
     display: flex;
-    flex-direction: column;
-    align-content: center; }
-.testimonial-wrapper .container .swiper-container .swiper-wrapper .testimonial .card-body {
-  background: #fff;
-  position: relative; }
-.testimonial-wrapper .container .swiper-container .swiper-wrapper .testimonial .card-body:after {
-  position: absolute;
-  left: 50%;
-  bottom: calc(100% - 7px);
-  -webkit-transform: translateX(-50%) scaleX(0.75) rotate(-135deg);
-  -ms-transform: translateX(-50%) scaleX(0.75) rotate(-135deg);
-  transform: translateX(-50%) scaleX(0.75) rotate(-135deg);
-  content: "";
-  display: block;
-  width: 14px;
-  height: 14px;
-  background-color: #fff;
-  position: absolute;
-  -webkit-transform: scaleX(0.75) rotate(45deg);
-  -ms-transform: scaleX(0.75) rotate(45deg);
-  transform: scaleX(0.75) rotate(45deg);
-  border-width: 0;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box; }
+    background: none;
+    min-height: 6em; }
+    .testimonial-wrapper .container .swiper-container .swiper-wrapper .testimonial .card-header .card-header-text {
+      margin-left: auto;
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      color: #fff; }
+      .testimonial-wrapper .container .swiper-container .swiper-wrapper .testimonial .card-header .card-header-text div {
+        margin-top: auto; }
+      .testimonial-wrapper .container .swiper-container .swiper-wrapper .testimonial .card-header .card-header-text small {
+        margin-bottom: auto; }
+  .testimonial-wrapper .container .swiper-container .swiper-wrapper .testimonial .card-body {
+    background: #fff;
+    position: relative; }
+  .testimonial-wrapper .container .swiper-container .swiper-wrapper .testimonial .card-body:after {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% - 7px);
+    -webkit-transform: translateX(-50%) scaleX(0.75) rotate(-135deg);
+    -ms-transform: translateX(-50%) scaleX(0.75) rotate(-135deg);
+    transform: translateX(-50%) scaleX(0.75) rotate(-135deg);
+    content: "";
+    display: block;
+    width: 14px;
+    height: 14px;
+    background-color: #fff;
+    position: absolute;
+    -webkit-transform: scaleX(0.75) rotate(45deg);
+    -ms-transform: scaleX(0.75) rotate(45deg);
+    transform: scaleX(0.75) rotate(45deg);
+    border-width: 0;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box; }
+
+.block-job .block-header {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 2em; }
+  .block-job .block-header .description {
+    background: #fff;
+    padding: 20px 20px 20px 20px;
+    position: relative;
+    color: #000;
+    width: 100%;
+    margin-bottom: 0.5em; }
+    .block-job .block-header .description p {
+      color: #000; }
+  .block-job .block-header .description::after {
+    content: "";
+    display: block;
+    width: 14px;
+    height: 14px;
+    background-color: #fff;
+    position: absolute;
+    -webkit-transform: scaleX(0.75) rotate(45deg);
+    -ms-transform: scaleX(0.75) rotate(45deg);
+    transform: scaleX(0.75) rotate(45deg);
+    border-width: 0;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    left: 50%;
+    top: calc(100% - 7px);
+    transform: translateX(-50%) scaleX(0.75) rotate(-135deg); }
+  .block-job .block-header .block-image {
+    margin-left: auto;
+    margin-right: auto;
+    margin: 1em;
+    border-radius: 50%; }
 
 .widget .menu {
   display: block;

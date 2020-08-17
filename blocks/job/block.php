@@ -34,7 +34,8 @@ $the_query = new WP_Query( $args );
 $headline = get_field('headline');
 $subheadline = get_field('subheadline');
 $description = get_field('description');
-$blockimage = get_field('block_image');
+$block_image = get_field('block_image');
+
 $background_color = get_field('background-color');
 $font_color = get_field('font-color');
 $anker_id = get_field('anker_id');
@@ -52,14 +53,19 @@ $anker_id = get_field('anker_id');
 </style>
 <?php  if ( $the_query->have_posts() ) : ?>
 <section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $classes ); ?>">
+<div class="container">
 <div class="block-header" id="<?php echo $anker_id?>">
+
 <p class="subheadline"><?php echo $subheadline;?></p>
 <h2><?php echo $headline;?></h2>
-<p class="description"><?php echo $description;?></p>
+<div class="description"><?php echo $description;?></div>
 <?php if ( $block_image ) : ?>
-		<img src="<?php echo esc_url( $block_image['url'] ); ?>" alt="<?php echo esc_attr( $block_image['alt'] ); ?>" />
+		<img class="block-image" src="<?php echo esc_url( $block_image['url'] ); ?>" alt="<?php echo esc_attr( $block_image['alt'] ); ?>" />
 	<?php endif; ?>
+  <?php the_field ('zitat')?>
 </div>
+</div>
+
 <div class="container">
 <div id="accordion">
 <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
