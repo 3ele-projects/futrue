@@ -26,6 +26,7 @@ function futrue_inlcude()
 {
 	/* bootstrap JS */
 	wp_enqueue_script('',  get_stylesheet_directory_uri()  . '/assets/bootstrap/js/bootstrap.bundle.min.js', array('jquery'));
+	/* inlcude Font Awesome 5*/
 	wp_enqueue_style( 'Font_Awesome', get_stylesheet_directory_uri()  . '/fonts/fontawesome/css/all.css' ); 
 	/*swiper */
 	wp_enqueue_script('swiper',  get_stylesheet_directory_uri()  . '/assets/swiper/js/swiper-bundle.min.js', array('jquery'));

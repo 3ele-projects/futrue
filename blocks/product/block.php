@@ -39,19 +39,19 @@ $anker_id = get_field('anker_id');
 <?php 
   if ( $the_query->have_posts() ) : ?>
     <style type="text/css">
-        #<?php echo $id; ?> {
+        #<?php echo $anker_id; ?> {
             background: <?php echo $background_color; ?>;
           
         }
-        #<?php echo $id; ?> .block-header .description,
-        #<?php echo $id; ?> .block-header .subheadline,
-        #<?php echo $id; ?> .block-header h2{
+        #<?php echo $anker_id; ?> .block-header .description,
+        #<?php echo $anker_id; ?> .block-header .subheadline,
+        #<?php echo $anker_id; ?> .block-header h2{
           color: <?php echo $font_color; ?>!important;
         } 
     </style>
-    <section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>-wrapper">
+    <section id="<?php echo $anker_id; ?>" class="product-wrapper">
     <div class="container">
-    <div id="<?php echo $anker_id; ?>" class="block-header">
+    <div  class="block-header">
 <p class="subheadline"><?php echo $subheadline;?></p>
 <h2><?php echo $headline;?></h2>
 <p class="description"><?php echo $description;?></p>

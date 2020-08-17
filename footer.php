@@ -43,7 +43,6 @@
 </div>
 <div class="sub-footer">
 <div class="container">
-<div class="row">
 <?php
 			wp_nav_menu(
 				array(
@@ -54,7 +53,7 @@
 		?>
 </div>
 </div>
-</div>
+
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

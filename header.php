@@ -28,7 +28,7 @@
 	<header id="masthead" class="site-header">
 	<div class="pre-header">
 	<div class="container">
-		<div class="row">
+	
 		<?php
 			wp_nav_menu(
 				array(
@@ -39,7 +39,7 @@
 		?>
 		</div>
 		</div>
-		</div>
+		
 		<div class="container">
 	
 			<div class="row">

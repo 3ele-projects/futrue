@@ -41,20 +41,20 @@ $font_color = get_field('font-color');
 $anker_id = get_field('anker_id');
 ?>
 <style type="text/css">
-	<?php echo '#' . $id; ?> {
+	#<?php echo $anker_id; ?> {
     background: <?php echo $background_color; ?>;
   }
-    #<?php echo $id; ?> .block-header .description,
-        #<?php echo $id; ?> .block-header .subheadline,
-        #<?php echo $id; ?> .block-header h2{
+    #<?php echo $anker_id; ?> .block-header .description,
+        #<?php echo $anker_id; ?> .block-header .subheadline,
+        #<?php echo $anker_id; ?> .block-header h2{
           color: <?php echo $font_color; ?>!important;
     
 	}
 </style>
 <?php  if ( $the_query->have_posts() ) : ?>
-<section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $classes ); ?>">
+<section id="<?php echo $anker_id; ?>"  class="<?php echo esc_attr( $classes ); ?>">
 <div class="container">
-<div class="block-header" id="<?php echo $anker_id?>">
+<div class="block-header" >
 
 <p class="subheadline"><?php echo $subheadline;?></p>
 <h2><?php echo $headline;?></h2>
@@ -72,12 +72,12 @@ $anker_id = get_field('anker_id');
   <div class="card">
     <div class="card-header" id="heading-<?php   the_ID();?>">
       <h5 class="mb-0">
-        <div class="" data-toggle="collapse" data-target="#collapse-<?php the_ID();?>" aria-expanded="true" aria-controls="collapse-<?php  the_ID();?>">
+        <div class="accordion-btn collapsed" data-toggle="collapse" data-target="#collapse-<?php the_ID();?>" aria-expanded="false" aria-controls="collapse-<?php  the_ID();?>">
         <?php the_title(); ?>
         </div>
       </h5>
     </div>
-    <div id="collapse-<?php  the_ID();?>" class="collapse show" aria-labelledby="heading-<?php   the_ID();?>" data-parent="#accordion">
+    <div id="collapse-<?php  the_ID();?>" class="collapse" aria-labelledby="heading-<?php   the_ID();?>" data-parent="#accordion">
       <div class="card-body">
       <?php the_field( 'job_description' , get_the_ID()); ?>
       </div>
@@ -86,9 +86,12 @@ $anker_id = get_field('anker_id');
   </div>
   </div>
 </section>
-<script type="javascript">
+<script>
 jQuery(document).ready(function( $ ) {
-  $('.collapse').collapse()
+  $("#accordion .accordion-btn:first").trigger("click");
+
+
+
 });
 
 </script>
