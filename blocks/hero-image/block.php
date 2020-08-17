@@ -46,7 +46,7 @@ $font_color = get_field('font-color');
 $anker_id = get_field('anker_id');
 
 ?>
-<section id="<?php echo esc_attr($anker); ?>" class="hero-image <?php echo esc_attr($className); ?>">
+<section id="<?php echo esc_attr($anker_id); ?>" class="hero-image <?php echo esc_attr($className); ?>">
 <div id="particles-js"></div>
 
   <div class="container">
