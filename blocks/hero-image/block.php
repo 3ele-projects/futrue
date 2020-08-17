@@ -41,7 +41,7 @@ $col_align = get_field('align');
 $headline = get_field('headline');
 $subheadline = get_field('subheadline');
 $description = get_field('description');
-$ background-image = get_field(' background-image');
+$background-image = get_field(' background-image');
 $font_color = get_field('font-color');
 $anker_id = get_field('anker_id');
 
