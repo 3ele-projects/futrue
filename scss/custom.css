@@ -6559,18 +6559,22 @@ a.text-dark:hover, a.text-dark:focus {
   background-color: #000;
   width: 100%;
   overflow: hidden; }
-  .sub-footer .row .menu,
-  .pre-header .row .menu {
-    display: block;
-    list-style: none;
-    margin-left: auto; }
-    .sub-footer .row .menu li,
-    .pre-header .row .menu li {
-      padding: 0.5rem 0.5rem;
-      display: inline-block; }
-      .sub-footer .row .menu li a,
-      .pre-header .row .menu li a {
-        font-size: 0.875rem; }
+  .sub-footer div,
+  .pre-header div {
+    width: 100%;
+    display: flex; }
+    .sub-footer div .menu,
+    .pre-header div .menu {
+      display: block;
+      list-style: none;
+      margin-left: auto; }
+      .sub-footer div .menu li,
+      .pre-header div .menu li {
+        padding: 0.5rem 0.5rem;
+        display: inline-block; }
+        .sub-footer div .menu li a,
+        .pre-header div .menu li a {
+          font-size: 0.875rem; }
 
 .main-navigation li {
   position: relative;
@@ -6705,16 +6709,15 @@ a.text-dark:hover, a.text-dark:focus {
 
 [data-toggle="collapse"]:before {
   display: inline-block;
-  font-family: 'Font Awesome 5 Free';
+  font-family: 'Font Awesome\ 5 Free';
   font-size: inherit;
   text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  content: "\f107";
-  transform: rotate(90deg);
-  transition: all linear 0.25s; }
+  content: "\f077";
+  transform: rotate(0deg);
+  transition: all linear 0.25s;
+  font-weight: 900; }
 
 [data-toggle="collapse"].collapsed:before {
-  transform: rotate(0deg); }
+  transform: rotate(180deg); }
 
 /*# sourceMappingURL=custom.css.map */

@@ -135,9 +135,11 @@ margin-top: auto;
     width:100%;
     overflow:hidden;
 
-
-
-.row .menu {
+div { 
+    width:100%;
+    display:flex;
+    
+    .menu {
     display:block;
     list-style:none;
   
@@ -149,6 +151,7 @@ margin-top: auto;
         a {
             font-size:$font-size-sm;
     }
+}
 }
 }
 }
@@ -344,18 +347,17 @@ div {
 
 [data-toggle="collapse"]:before {
     display: inline-block;
-font-family: 'Font Awesome 5 Free';
+    font-family: 'Font Awesome\ 5 Free';
     font-size: inherit;
     text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  content: "\f107";
-  transform: rotate(90deg) ;
+  content: "\f077";
+  transform: rotate(0deg) ;
   transition: all linear 0.25s;
+  font-weight: 900;
 
   }   
 [data-toggle="collapse"].collapsed:before {
-  transform: rotate(0deg) ;
+  transform: rotate(180deg) ;
 }
 
 
