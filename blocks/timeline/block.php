@@ -32,13 +32,8 @@ $blockimage = get_field('block_image');
 $font_color = get_field('font-color');
 $anker_id = get_field('anker_id');
 ?>
-
-
-
 <section id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $classes ); ?>">
-
 	<?php if ( have_rows( 'timeline' ) ) : ?>
-     
         <style type="text/css">
         #<?php echo $id; ?> {
             background: <?php echo $background_color; ?>; 
@@ -50,7 +45,6 @@ $anker_id = get_field('anker_id');
           color: <?php echo $font_color; ?>!important;
         } 
     </style>
-
         <div class="container">
         <div class="block-header" id="<?php echo $anker_id; ?>">
 <p class="subheadline"><?php echo $subheadline;?></p>
@@ -59,17 +53,14 @@ $anker_id = get_field('anker_id');
 
 </div>
         <div class="row justify-content-center">
-        <div class="col-sm-9 my-auto">
-		<?php while ( have_rows( 'timeline' ) ) : the_row(); ?>
-        <div class="row">
-        <div class="col-sm-3">
-		<p>	<?php the_sub_field( 'year' ); ?></p>
-            </div>
-            <div class="col-sm-9">
-			<p><?php the_sub_field( 'event' ); ?></p>
-            </div>
-            </div>
-		<?php endwhile; ?>
+        <div class="col-sm-12 my-auto">
+        <ul class="f-timeline"> 
+        <?php $rows = get_field('timeline');?>
+
+        <?php  foreach( $rows as $row ): ?>
+    <li class="f-timeline-event">	<i class="f-timeline-date circle">	<?php echo $row['year']; ?></i>  <span><?php echo $row['event']; ?> </span> </li>         
+		<?php endforeach; ?>
+        </ul>
         </div>
             </div>
 	<?php else : ?>

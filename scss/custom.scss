@@ -4,7 +4,7 @@ $green:   #007056 !default;
 $primary:       $blue !default;
 $secondary:    #00B4FF!default;
 $font-family: 'Assistant', sans-serif;
-
+$white : rgba(255,255,255,0.9);
 @import "../assets/bootstrap/scss/functions";
 @import "../assets/bootstrap/scss/variables";
 @import "../assets/bootstrap/scss/mixins";
@@ -120,7 +120,12 @@ margin-top: auto;
             right:20px;
             top:20px;
         }
-        a {position: relative;color:#000;display: inline-block;transition: color .2s ease;text-decoration:none !important;}
+        a {position: relative;
+        color: $black;
+        display: inline-block;
+        transition: color .2s ease;
+        text-decoration:none !important;
+        }
         a:hover {color: #aaa;}
         a:hover::after, a:hover::before {width: 100%;left: 0;}
         a::after, a::before {content: ''; position: absolute;top: calc(100% + 5px);width: 0;right: 0;height: 3px;}
@@ -150,7 +155,17 @@ div {
         display:inline-block;
         a {
             font-size:$font-size-sm;
+            
     }
+     a {position: relative;color:$blue;
+     display: inline-block;
+     transition: color .2s ease;
+     text-decoration:none !important;}
+        a:hover {color: #aaa;}
+        a:hover::after, a:hover::before {width: 100%;left: 0;}
+        a::after, a::before {content: ''; position: absolute;top: calc(100% + 5px);width: 0;right: 0;height: 3px;}
+        a::before {transition: width .4s cubic-bezier(0.51, 0.18, 0, 0.88) .1s;background: #00B4FF;}
+        a::after {transition: width .2s cubic-bezier(0.29, 0.18, 0.26, 0.83);background: #00B4FF;}
 }
 }
 }
@@ -173,6 +188,7 @@ div {
 section {
 padding-top:100px;
 padding-bottom:150px;
+box-shadow: inset 0px -3px 50px -20px rgba(255, 255, 255, 0.15);
 
 }
 }
@@ -290,9 +306,10 @@ div {
     
 }
      .block-image {
+             margin: 1em;
          margin-left:auto;
          margin-right:auto;
-         margin: 1em;
+     
   
 	border-radius: 50%;
 
@@ -359,6 +376,68 @@ div {
 [data-toggle="collapse"].collapsed:before {
   transform: rotate(180deg) ;
 }
+
+.circle {
+    border-radius:50%;
+}
+
+.f-timeline {
+    list-style:none;
+
+
+.f-timeline-event {
+    line-height: 4.4em;  
+        height: 4.4em;
+       margin: 2.5em auto;
+           position:relative;
+span {
+
+    padding-left:2em;
+
+}
+.f-timeline-date {
+    border:solid 0.1px;
+    border-color:$white;
+    background:none;
+    width: 4.4em;
+    height: 4.4em;
+    line-height: 4.4em;
+                   display: inline-block;
+    text-align: center;
+    margin-right:4.4em;
+    position:relative; 
+
+       @include media-breakpoint-down(md) { 
+    display:block;
+    margin-right:auto;
+    margin-left:auto;
+
+       }
+
+
+
+}
+}
+ .f-timeline-event:not(:last-child) .f-timeline-date:after {
+    position: absolute;
+    height: 2.5em;
+    width: 0.1em;
+
+    border:0.1px solid $white;
+    content: ' ';
+    margin-right: 2.2em;
+    right: 0px;
+    bottom: 0px;
+    transform: translateY(100%);
+    }
+
+}
+
+
+
+
+
+
 
 
 

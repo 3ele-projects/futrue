@@ -25,7 +25,7 @@ if( !empty($block['align']) ) {
    
   );
 
-$the_query = new WP_Query( $args );
+//$the_query = new WP_Query( $args );
 $background_color = get_field('background-color');
 $headline = get_field('headline');
 $subheadline = get_field('subheadline');
@@ -34,8 +34,7 @@ $blockimage = get_field('block_image');
 $font_color = get_field('font-color');
 $anker_id = get_field('anker_id');
 ?>
-<?php 
-  if ( $the_query->have_posts() ) :?>
+
 
   <section id="<?php echo $anker_id; ?>" class="<?php echo esc_attr($className); ?>-wrapper">
 
@@ -46,39 +45,45 @@ $anker_id = get_field('anker_id');
 <p class="description"><?php echo $description;?></p>
 
 </div>
+<?php $relation = get_field( 'relation' ); ?>
+	<?php if ( $relation ) : ?>
 <div class="swiper-container">
 <div class="swiper-wrapper">
-<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+		<?php foreach ($relation as $post) : ?>
+			<?php setup_postdata ($post); ?>
       <div class="swiper-slide">
       <div class=" card testimonial ">
       <div class="card-header">
-     <img src="<?php the_field('image', get_the_ID()); ?>" class="t-image" /> 
+     <img src="<?php the_field('image', $post->ID); ?>" class="t-image" /> 
     <div class="card-header-text">
-    <div><?php the_title(); ?></div>
-   <small> <?php the_field('position', get_the_ID()); ?></small>
+    <div><?php echo get_the_title($post->ID); ?></div>
+   <small> <?php the_field('position', $post->ID); ?></small>
   </div>
   </div>
         <div class="card-body t-text">
-        <small><?php the_field('content', get_the_ID()); ?></small>
+        <small><?php the_field('content', $post->ID); ?></small>
   </div>
       </div>
       </div>
-    <?php endwhile; ?>
+		<?php endforeach; ?>
+
   </div>
   </div>
+  <?php wp_reset_postdata(); ?>
+	<?php endif; ?>
   </div>
   <script>
     var swiper = new Swiper('.swiper-container', {
       breakpoints: {
     // when window width is >= 320px
     320: {
-      slidesPerView: 1,
-      spaceBetween: 0
+      slidesPerView: 1.005,
+      spaceBetween: 10,
     },
     // when window width is >= 480px
     480: {
-      slidesPerView: 1,
-      spaceBetween: 0,
+      slidesPerView: 1.1,
+      spaceBetween: 10,
     },
     // when window width is >= 640px
     640: {
@@ -106,4 +111,3 @@ loop:true,
           color: <?php echo $font_color; ?>!important;
         } 
     </style>
-<?php endif;?>

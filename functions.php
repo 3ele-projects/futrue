@@ -13,9 +13,9 @@
 include get_template_directory() . '/post-types/job.php';
 include get_template_directory() . '/post-types/product.php';
 include get_template_directory() . '/post-types/testimonial.php';
-
+include get_template_directory() . '/acf/acf.php';
 function kb_admin_style() {
-	wp_enqueue_style('admin-styles', get_template_directory_uri().'/assets/bootstrap/bootstrap.min.css');
+	wp_enqueue_style('admin-styles', get_template_directory_uri().'/assets/bootstrap/css/bootstrap.min.css');
  }
  
  add_action('admin_enqueue_scripts', 'kb_admin_style');
@@ -243,137 +243,7 @@ if (defined('JETPACK__VERSION')) {
 }
 
 
-/* ACF Support for Blocks */
 
-// Register Custom Blocks
-add_action('acf/init', 'my_register_blocks');
-function my_register_blocks()
-{
-
-	// check function exists.
-	if (function_exists('acf_register_block_type')) {
-
-
-		// register a testimonial block.
-		acf_register_block_type(array(
-			'name'				=> 'testimonial',
-			'title'				=> __('Testimonial'),
-			'description'		=> __('A custom testimonial block.'),
-			'render_template'   => 'blocks/testimonial/block.php',
-			'category'			=> 'formatting',
-			'icon'				=> 'admin-comments',
-			'keywords'			=> array('testimonial'),
-			'enqueue_style' => get_template_directory_uri() . '/blocks/testimonial/style.css',
-			'render_callback'	=> 'my_acf_block_render_callback',
-		));
-
-		// register a product block.
-		acf_register_block_type(array(
-			'name'				=> 'product',
-			'title'				=> __('Product'),
-			'description'		=> __('A custom product block.'),
-			'render_template'   => 'blocks/product/block.php',
-			'category'			=> 'formatting',
-			'icon'				=> 'admin-comments',
-			'keywords'			=> array('product'),
-			'enqueue_style' => get_template_directory_uri() . '/blocks/product/style.css',
-			'render_callback'	=> 'my_acf_block_render_callback',
-		));
-
-
-		// register a job block.
-		acf_register_block_type(array(
-			'name'				=> 'job',
-			'title'				=> __('Job'),
-			'description'		=> __('A custom job block.'),
-			'render_template'   => 'blocks/job/block.php',
-			'category'			=> 'formatting',
-			'icon'				=> 'admin-comments',
-			'keywords'			=> array('job'),
-			'enqueue_style' => get_template_directory_uri() . '/blocks/job/style.css',
-			'render_callback'	=> 'my_acf_block_render_callback',
-		));
-
-		acf_register_block_type(array(
-			'name'				=> 'timeline',
-			'title'				=> __('Timeline'),
-			'description'		=> __('A custom Timeline block.'),
-			'render_template'   => 'blocks/timeline/block.php',
-			'category'			=> 'layout',
-			'icon'				=> 'admin-comments',
-			'keywords'			=> array('timeline'),
-			'enqueue_style' => get_template_directory_uri() . '/blocks/timeline/style.css',
-			'render_callback'	=> 'my_acf_block_render_callback',
-		));
-		acf_register_block_type(array(
-			'name'				=> 'hero-image',
-			'title'				=> __('Hero Image'),
-			'description'		=> __('A custom Hero Image block.'),
-			'render_template'   => 'blocks/hero-image/block.php',
-			'category'			=> 'layout',
-			'icon'				=> 'admin-comments',
-			'keywords'			=> array('hero-image'),
-			'enqueue_style' => get_template_directory_uri() . '/blocks/hero-image/style.css',
-			'render_callback'	=> 'my_acf_block_render_callback',
-		));
-		acf_register_block_type(array(
-			'name'				=> 'two-columns',
-			'title'				=> __('two Columns'),
-			'description'		=> __('A custom two-columns block.'),
-			'render_template'   => 'blocks/two-columns/block.php',
-			'render_callback'	=> 'my_acf_block_render_callback',
-			'category'			=> 'layout',
-			'icon'				=> 'admin-comments',
-			'keywords'			=> array('two-columns'),
-			'enqueue_style' => get_template_directory_uri() . '/blocks/two-columns/style.css',
-		));
-	}
-}
-
-
-function my_acf_block_render_callback( $block ) {
-	
-	// convert name ("acf/testimonial") into path friendly slug ("testimonial")
-	$slug = str_replace('acf/', '', $block['name']);
-
-	// include a template part from within the "template-parts/block" folder
-	if( file_exists( get_theme_file_path("/blocks/".$slug."/block.php") ) ) {
-		include( get_theme_file_path("/blocks/".$slug."/block.php") );
-	}
-}
-
-/* Filter Blocks */
-
-add_filter( 'render_block', function( $block_content, $block ) {
-	//var_dump ($block);
-	//var_dump ($block_content);
-    // Remove the block/timed-block from the rendered content.
-   if ( 'core/heading' === $block['blockName'] ) {
-	   $headline = $block_content;
-
-       $block_content = '<div class="container">'.$headline.'</div>';
-  }
-  if ( 'core/paragraph' === $block['blockName'] ) {
-	$content = $block_content;
-
-	$block_content = '<div class="container">'.$content.'</div>';
-}
-
-
-   return $block_content;
-}, 10, 2 );
-
-if ( function_exists( 'acf_add_options_page' ) ) {
-
-	acf_add_options_page( array(
-		'page_title'	=> 'Options',
-		'menu_title'	=> 'Options',
-		'menu_slug' 	=> 'acf-options',
-		'capability'	=> 'edit_posts',
-		'redirect'		=> false,
-	));
-
-}
 
 function na_remove_slug( $post_link, $post, $leavename ) {
 
@@ -400,701 +270,90 @@ function na_parse_request( $query ) {
 add_action( 'pre_get_posts', 'na_parse_request' );
 
 
-/* ACF Fieldsets */
 
-if( function_exists('acf_add_local_field_group') ):
 
-	acf_add_local_field_group(array(
-		'key' => 'group_5f3274c8663ac',
-		'title' => '2-columns',
-		'fields' => array(
+
+
+/**
+ * Set the theme colors
+ */
+add_action( 'after_setup_theme', 'prefix_register_colors' );
+function prefix_register_colors() {
+	add_theme_support(
+		'editor-color-palette', array(
 			array(
-				'key' => 'field_5f3274df64c7c',
-				'label' => 'Ausrichtung',
-				'name' => 'align',
-				'type' => 'select',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'choices' => array(
-					'order-0' => 'Content Links',
-					'order-1' => 'Content Rechts',
-				),
-				'default_value' => false,
-				'allow_null' => 0,
-				'multiple' => 0,
-				'ui' => 0,
-				'return_format' => 'value',
-				'ajax' => 0,
-				'placeholder' => '',
+				'name'  => esc_html__( 'Black', 'prefix_textdomain' ),
+				'slug' => 'black',
+				'color' => '#333',
 			),
 			array(
-				'key' => 'field_5f33113ee423d',
-				'label' => 'Headline',
-				'name' => 'headline',
-				'type' => 'text',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
+				'name'  => esc_html__( 'Blue', 'prefix_textdomain' ),
+				'slug' => 'blue',
+				'color' => '#669BC9',
 			),
 			array(
-				'key' => 'field_5f3316cf129bf',
-				'label' => 'content',
-				'name' => 'content',
-				'type' => 'wysiwyg',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'tabs' => 'all',
-				'toolbar' => 'full',
-				'media_upload' => 1,
-				'delay' => 0,
+				'name'  => esc_html__( 'Light', 'prefix_textdomain' ),
+				'slug' => 'light',
+				'color' => '#eef2f5',
 			),
 			array(
-				'key' => 'field_5f33b0f18468e',
-				'label' => 'Image',
-				'name' => 'image',
-				'type' => 'image',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'return_format' => 'array',
-				'preview_size' => 'medium',
-				'library' => 'all',
-				'min_width' => '',
-				'min_height' => '',
-				'min_size' => '',
-				'max_width' => '',
-				'max_height' => '',
-				'max_size' => '',
-				'mime_types' => '',
+				'name'  => esc_html__( 'Yellow', 'prefix_textdomain' ),
+				'slug' => 'yellow',
+				'color' => '#c3a144',
 			),
-		),
-		'location' => array(
-			array(
-				array(
-					'param' => 'block',
-					'operator' => '==',
-					'value' => 'acf/two-columns',
-				),
-			),
-		),
-		'menu_order' => 0,
-		'position' => 'normal',
-		'style' => 'default',
-		'label_placement' => 'top',
-		'instruction_placement' => 'label',
-		'hide_on_screen' => '',
-		'active' => true,
-		'description' => '',
-	));
+		)
+	);
+}
+
+/**
+ * Get the colors formatted for use with Iris, Automattic's color picker
+ */
+function output_the_colors() {
 	
-	acf_add_local_field_group(array(
-		'key' => 'group_5f33ac360aff9',
-		'title' => 'Main Options',
-		'fields' => array(
-			array(
-				'key' => 'field_5f33ac3c0b05e',
-				'label' => '',
-				'name' => '',
-				'type' => 'text',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
-		),
-		'location' => array(
-			array(
-				array(
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'post',
-				),
-			),
-		),
-		'menu_order' => 0,
-		'position' => 'normal',
-		'style' => 'default',
-		'label_placement' => 'top',
-		'instruction_placement' => 'label',
-		'hide_on_screen' => '',
-		'active' => true,
-		'description' => '',
-	));
-	
-	acf_add_local_field_group(array(
-		'key' => 'group_5f33aa251c1fc',
-		'title' => 'Timeline',
-		'fields' => array(
-			array(
-				'key' => 'field_5f33aa33d22a1',
-				'label' => 'Timeline',
-				'name' => 'timeline',
-				'type' => 'repeater',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'collapsed' => '',
-				'min' => 0,
-				'max' => 0,
-				'layout' => 'table',
-				'button_label' => '',
-				'sub_fields' => array(
-					array(
-						'key' => 'field_5f33aa40d22a2',
-						'label' => 'Jahr',
-						'name' => 'year',
-						'type' => 'text',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '30',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => '',
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'maxlength' => 4,
-					),
-					array(
-						'key' => 'field_5f33aa67d22a3',
-						'label' => 'Ereignis',
-						'name' => 'event',
-						'type' => 'text',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '80',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => '',
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'maxlength' => '',
-					),
-				),
-			),
-		),
-		'location' => array(
-			array(
-				array(
-					'param' => 'block',
-					'operator' => '==',
-					'value' => 'acf/timeline',
-				),
-			),
-		),
-		'menu_order' => 0,
-		'position' => 'normal',
-		'style' => 'default',
-		'label_placement' => 'top',
-		'instruction_placement' => 'label',
-		'hide_on_screen' => '',
-		'active' => true,
-		'description' => '',
-	));
-	
-	acf_add_local_field_group(array(
-		'key' => 'group_5f33b10bb965e',
-		'title' => 'custom_blocks',
-		'fields' => array(
-			array(
-				'key' => 'field_5f33b112d95e1',
-				'label' => 'background',
-				'name' => 'background-color',
-				'type' => 'color_picker',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-			),
-		),
-		'location' => array(
-			array(
-				array(
-					'param' => 'block',
-					'operator' => '==',
-					'value' => 'all',
-				),
-			),
-		),
-		'menu_order' => 0,
-		'position' => 'normal',
-		'style' => 'default',
-		'label_placement' => 'top',
-		'instruction_placement' => 'label',
-		'hide_on_screen' => '',
-		'active' => true,
-		'description' => '',
-	));
-	
-	acf_add_local_field_group(array(
-		'key' => 'group_5f33b16d0d563',
-		'title' => 'hero-image',
-		'fields' => array(
-			array(
-				'key' => 'field_5f33b181216e6',
-				'label' => 'Background',
-				'name' => 'background-image',
-				'type' => 'image',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'return_format' => 'array',
-				'preview_size' => 'full',
-				'library' => 'all',
-				'min_width' => '',
-				'min_height' => '',
-				'min_size' => '',
-				'max_width' => '',
-				'max_height' => '',
-				'max_size' => '',
-				'mime_types' => '',
-			),
-			array(
-				'key' => 'field_5f33b1a8cde25',
-				'label' => 'Headline',
-				'name' => 'hero-text-headline',
-				'type' => 'text',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
-			array(
-				'key' => 'field_5f33b1bacde26',
-				'label' => 'Subheadlline',
-				'name' => 'hero-text-subheadline',
-				'type' => 'text',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
-			array(
-				'key' => 'field_5f33b1c8cde27',
-				'label' => 'CTA',
-				'name' => 'cta',
-				'type' => 'group',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'layout' => 'block',
-				'sub_fields' => array(
-					array(
-						'key' => 'field_5f33b1dacde28',
-						'label' => 'Link',
-						'name' => 'link',
-						'type' => 'url',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => '',
-						'placeholder' => '',
-					),
-					array(
-						'key' => 'field_5f33b1e4cde29',
-						'label' => 'linktext',
-						'name' => 'linktext',
-						'type' => 'text',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => '',
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'maxlength' => '',
-					),
-				),
-			),
-		),
-		'location' => array(
-			array(
-				array(
-					'param' => 'block',
-					'operator' => '==',
-					'value' => 'acf/hero-image',
-				),
-			),
-		),
-		'menu_order' => 0,
-		'position' => 'normal',
-		'style' => 'default',
-		'label_placement' => 'top',
-		'instruction_placement' => 'label',
-		'hide_on_screen' => '',
-		'active' => true,
-		'description' => '',
-	));
-	
-	acf_add_local_field_group(array(
-		'key' => 'group_5f33bece68618',
-		'title' => 'job',
-		'fields' => array(
-			array(
-				'key' => 'field_5f33bed3b8d37',
-				'label' => 'Jobtitle',
-				'name' => 'jobtitle',
-				'type' => 'text',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
-			array(
-				'key' => 'field_5f33bee0b8d38',
-				'label' => 'job_description',
-				'name' => 'job_description',
-				'type' => 'wysiwyg',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'tabs' => 'all',
-				'toolbar' => 'full',
-				'media_upload' => 1,
-				'delay' => 0,
-			),
-		),
-		'location' => array(
-			array(
-				array(
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'job',
-				),
-			),
-		),
-		'menu_order' => 0,
-		'position' => 'normal',
-		'style' => 'default',
-		'label_placement' => 'top',
-		'instruction_placement' => 'label',
-		'hide_on_screen' => '',
-		'active' => true,
-		'description' => '',
-	));
-	
-	acf_add_local_field_group(array(
-		'key' => 'group_5f33bdd7912d3',
-		'title' => 'product-block',
-		'fields' => array(
-			array(
-				'key' => 'field_5f33bdde2da5e',
-				'label' => 'Headline',
-				'name' => 'headline',
-				'type' => 'text',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
-			array(
-				'key' => 'field_5f33bde91fd10',
-				'label' => 'Subheadline',
-				'name' => 'subheadline',
-				'type' => 'text',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
-		),
-		'location' => array(
-			array(
-				array(
-					'param' => 'block',
-					'operator' => '==',
-					'value' => 'acf/product',
-				),
-			),
-		),
-		'menu_order' => 0,
-		'position' => 'normal',
-		'style' => 'default',
-		'label_placement' => 'top',
-		'instruction_placement' => 'label',
-		'hide_on_screen' => '',
-		'active' => true,
-		'description' => '',
-	));
-	
-	acf_add_local_field_group(array(
-		'key' => 'group_5f33bbfa35d9b',
-		'title' => 'testimonial_block',
-		'fields' => array(
-			array(
-				'key' => 'field_5f33bc04e6000',
-				'label' => 'Headline',
-				'name' => 'headline',
-				'type' => 'text',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
-			array(
-				'key' => 'field_5f33bc0c5132e',
-				'label' => 'SubHeadline',
-				'name' => 'subheadline',
-				'type' => 'text',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
-		),
-		'location' => array(
-			array(
-				array(
-					'param' => 'block',
-					'operator' => '==',
-					'value' => 'acf/testimonial',
-				),
-			),
-		),
-		'menu_order' => 0,
-		'position' => 'normal',
-		'style' => 'default',
-		'label_placement' => 'top',
-		'instruction_placement' => 'label',
-		'hide_on_screen' => '',
-		'active' => true,
-		'description' => '',
-	));
-	
-	acf_add_local_field_group(array(
-		'key' => 'group_5f32726b66f01',
-		'title' => 'testimonials',
-		'fields' => array(
-			array(
-				'key' => 'field_5f3272872307d',
-				'label' => 'position',
-				'name' => 'position',
-				'type' => 'text',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
-			array(
-				'key' => 'field_5f3272935c23f',
-				'label' => 'image',
-				'name' => 'image',
-				'type' => 'image',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'return_format' => 'url',
-				'preview_size' => 'thumbnail',
-				'library' => 'all',
-				'min_width' => 100,
-				'min_height' => 100,
-				'min_size' => '',
-				'max_width' => 150,
-				'max_height' => 150,
-				'max_size' => '',
-				'mime_types' => '',
-			),
-			array(
-				'key' => 'field_5f3273449f8ba',
-				'label' => 'content',
-				'name' => 'content',
-				'type' => 'textarea',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'maxlength' => '',
-				'rows' => '',
-				'new_lines' => '',
-			),
-		),
-		'location' => array(
-			array(
-				array(
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'testimonial',
-				),
-			),
-			array(
-				array(
-					'param' => 'block',
-					'operator' => '==',
-					'value' => 'acf/testimonial',
-				),
-			),
-		),
-		'menu_order' => 0,
-		'position' => 'normal',
-		'style' => 'default',
-		'label_placement' => 'top',
-		'instruction_placement' => 'label',
-		'hide_on_screen' => '',
-		'active' => true,
-		'description' => '',
-	));
-	
-	endif;
+	// get the colors
+    $color_palette = current( (array) get_theme_support( 'editor-color-palette' ) );
+
+	// bail if there aren't any colors found
+	if ( !$color_palette )
+		return;
+
+	// output begins
+	ob_start();
+
+	// output the names in a string
+	echo '[';
+		foreach ( $color_palette as $color ) {
+			echo "'" . $color['color'] . "', ";
+		}
+	echo ']';
+    
+    return ob_get_clean();
+
+}
+
+/**
+ * Add the colors into Iris
+ */
+add_action( 'acf/input/admin_footer', 'gutenberg_sections_register_acf_color_palette' );
+function gutenberg_sections_register_acf_color_palette() {
+
+    $color_palette = output_the_colors();
+    if ( !$color_palette )
+        return;
+    ?>
+    <script type="text/javascript">
+        (function( $ ) {
+            acf.add_filter( 'color_picker_args', function( args, $field ){
+
+                // add the hexadecimal codes here for the colors you want to appear as swatches
+                args.palettes = <?php echo $color_palette; ?>
+
+                // return colors
+                return args;
+
+            });
+        })(jQuery);
+    </script>
+    <?php
+
+}

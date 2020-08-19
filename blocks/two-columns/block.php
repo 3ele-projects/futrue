@@ -1,6 +1,6 @@
 <?php
 /**
- * Block Name: Testimonial
+ * Block Name: Two Columns
  *
  * This is the template that displays the testimonials loop block.
  */
@@ -14,7 +14,7 @@
   <?php
 
 /**
- * Testimonial Block Template.
+ * Two Columns Block Template.
  *
  * @param   array $block The block settings and attributes.
  * @param   string $content The block inner HTML (empty).
@@ -44,9 +44,10 @@ $col_align = get_field('align');
 <div class="container">
 <div class="row">
 <div class="col-md-6 <?php echo get_field('align');?> ">
-<h2><?php the_field( 'headline' ); ?></h2>
-<?php the_field( 'content' ); ?>
 
+<h2><?php the_field( 'headline' ); ?></h2>
+<p><?php the_field( 'subheadline' ); ?></p>
+<?php the_field( 'description' ); ?>
 </div>
 <div class="col-md-6">
 <?php $image = get_field( 'image' ); ?>

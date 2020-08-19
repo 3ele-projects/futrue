@@ -56,22 +56,24 @@
    
    </button>
 			<?php
-			if ( is_front_page() ) :
-			wp_nav_menu(
-				array(
-					'theme_location' => 'home-menu',
-						'menu_id'        => 'home-menu',
-			
-				)
-			);
-			else : 
+			if ( is_singular( 'product' ) ) {
 				wp_nav_menu(
 					array(
 						'theme_location' => 'menu-1',
 						'menu_id'        => 'primary-menu',	
 					)
 				);
-			endif;
+				
+			}	
+			else {
+				wp_nav_menu(
+					array(
+						'theme_location' => 'home-menu',
+							'menu_id'        => 'home-menu',
+				
+					)
+				);
+			}
 			?>
 			</div>
 		
