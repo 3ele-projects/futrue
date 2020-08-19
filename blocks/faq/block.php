@@ -76,7 +76,9 @@ $anker_id = get_field('anker_id');
 	<?php else : ?>
 		<?php // no rows found ?>
 
-
+    </div>  
+    </div>  
+    </div>  
 
 </section>
 <script>
