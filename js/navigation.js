@@ -98,9 +98,9 @@
 	}
 }() );
 jQuery(document).ready(function( $ ) {
-  $("#home-menu li a").click(function(e) {
+  $(".primary-menu li a").click(function(e) {
     e.preventDefault();
     var aid = $(this).attr("href");
-    $('html,body').animate({scrollTop: $(aid).offset().top},'slow');
+    $('html,body').animate({scrollTop: $(aid).offset().top-10},'slow');
 });
 });

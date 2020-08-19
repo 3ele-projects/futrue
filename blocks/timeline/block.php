@@ -48,12 +48,12 @@ $anker_id = get_field('anker_id');
         <div class="container">
         <div class="block-header" id="<?php echo $anker_id; ?>">
 <p class="subheadline"><?php echo $subheadline;?></p>
-<h2><?php echo $headline;?></h2>
+<h2 class="headline"><?php echo $headline;?></h2>
 <p class="description"><?php echo $description;?></p>
 
 </div>
         <div class="row justify-content-center">
-        <div class="col-sm-12 my-auto">
+        <div class="col-sm-9">
         <ul class="f-timeline"> 
         <?php $rows = get_field('timeline');?>
 
@@ -65,8 +65,13 @@ $anker_id = get_field('anker_id');
             </div>
 	<?php else : ?>
 		<?php // no rows found ?>
+
+        <?php endif; ?>
+
+        <?php if ( get_field( 'cta_button' ) == 1 ) : ?>
+<a href="<?php the_field( 'link' ); ?>" class="m-md-3 btn btn-primary btn-lg"><?php the_field( 'linktext' ); ?> </a>
+	<?php endif; ?>
         </div>
 
-	<?php endif; ?>
     </section>
 

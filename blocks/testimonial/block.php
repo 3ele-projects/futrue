@@ -41,7 +41,7 @@ $anker_id = get_field('anker_id');
   <div class="container">
   <div class="block-header">
 <p class="subheadline"><?php echo $subheadline;?></p>
-<h2><?php echo $headline;?></h2>
+<h2 class="headline"><?php echo $headline;?></h2>
 <p class="description"><?php echo $description;?></p>
 
 </div>
@@ -54,7 +54,7 @@ $anker_id = get_field('anker_id');
       <div class="swiper-slide">
       <div class=" card testimonial ">
       <div class="card-header">
-     <img src="<?php the_field('image', $post->ID); ?>" class="t-image" /> 
+     <img src="<?php the_field('image', $post->ID); ?>" class="circle" /> 
     <div class="card-header-text">
     <div><?php echo get_the_title($post->ID); ?></div>
    <small> <?php the_field('position', $post->ID); ?></small>
@@ -66,10 +66,16 @@ $anker_id = get_field('anker_id');
       </div>
       </div>
 		<?php endforeach; ?>
+    <?php wp_reset_postdata(); ?>
+  </div>
 
+
+<div class="swiper-scrollbar"></div>
   </div>
-  </div>
-  <?php wp_reset_postdata(); ?>
+
+	<?php endif; ?>
+  <?php if ( get_field( 'cta_button' ) == 1 ) : ?>
+<a href="<?php the_field( 'link' ); ?>" class="m-md-3 btn btn-primary btn-lg"><?php the_field( 'linktext' ); ?> </a>
 	<?php endif; ?>
   </div>
   <script>
@@ -94,9 +100,10 @@ $anker_id = get_field('anker_id');
    
 loop:true,
       centeredSlides: true,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
+ 
+      scrollbar: {
+        el: '.swiper-scrollbar',
+        hide: true,
       },
     });
   </script>

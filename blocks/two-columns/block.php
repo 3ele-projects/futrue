@@ -37,26 +37,56 @@ if( !empty($block['align']) ) {
     $className .= ' align' . $block['align'];
 }
 $background_color = get_field('background-color');
-$col_align = get_field('align');
+$col_align = get_field('align');?>
 
-?>
 <section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>-wrapper">
 <div class="container">
-<div class="row">
-<div class="col-md-6 <?php echo get_field('align');?> ">
-
-<h2><?php the_field( 'headline' ); ?></h2>
-<p><?php the_field( 'subheadline' ); ?></p>
-<?php the_field( 'description' ); ?>
-</div>
-<div class="col-md-6">
+<?php if( get_field('align') == 'ml-md-auto' ){?>
+  <div class="row">
+<div class="col-md-6  <?php // echo $col_align;?>">
 <?php $image = get_field( 'image' ); ?>
 <?php if ( $image ) : ?>
 	<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>" />
 <?php endif; ?>
 
 </div>
-</div>    
+<div class="col-md-6  <?php  echo get_field('align');?> ">
+<span class="subheadline"><?php the_field( 'subheadline' ); ?></span>
+<h2 class="headline"><?php the_field( 'headline' ); ?></h2>
+
+<?php the_field( 'description' ); ?>
+<?php if ( get_field( 'cta_button' ) == 1 ) : ?>
+<a href="<?php the_field( 'link' ); ?>" class="m-md-3 btn btn-primary btn-lg"><?php the_field( 'linktext' ); ?> </a>
+	<?php endif; ?>
+</div>
+
+</div>
+<?php } 
+else {
+?>
+<div class="row">
+
+<div class="col-md-6  <?php  echo get_field('align');?> ">
+<span class="subheadline"><?php the_field( 'subheadline' ); ?></span>
+<h2 class="headline"><?php the_field( 'headline' ); ?></h2>
+
+<?php the_field( 'description' ); ?>
+<?php if ( get_field( 'cta_button' ) == 1 ) : ?>
+<a href="<?php the_field( 'link' ); ?>" class="m-md-3 btn btn-primary btn-lg"><?php the_field( 'linktext' ); ?> </a>
+	<?php endif; ?>
+</div>
+<div class="col-md-6  <?php // echo $col_align;?>">
+<?php $image = get_field( 'image' ); ?>
+<?php if ( $image ) : ?>
+	<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>" />
+<?php endif; ?>
+
+</div>
+</div>
+<?php 
+}
+
+?> 
   </div>    
   </section>   
     <style type="text/css">

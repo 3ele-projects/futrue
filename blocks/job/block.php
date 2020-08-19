@@ -56,8 +56,8 @@ $anker_id = get_field('anker_id');
 <div class="container">
 <div class="block-header" >
 
-<p class="subheadline"><?php echo $subheadline;?></p>
-<h2><?php echo $headline;?></h2>
+<span class="subheadline"><?php echo $subheadline;?></span>
+<h2 class="headline"><?php echo $headline;?></h2>
 <div class="description"><?php echo $description;?></div>
 <?php if ( $block_image ) : ?>
 		<img class="block-image" src="<?php echo esc_url( $block_image['url'] ); ?>" alt="<?php echo esc_attr( $block_image['alt'] ); ?>" />
@@ -83,6 +83,9 @@ $anker_id = get_field('anker_id');
       </div>
     </div>
     <?php endwhile; ?>
+    <?php if ( get_field( 'cta_button' ) == 1 ) : ?>
+<a href="<?php the_field( 'link' ); ?>" class="m-md-3 btn btn-primary btn-lg"><?php the_field( 'linktext' ); ?> </a>
+	<?php endif; ?>
   </div>
   </div>
 </section>

@@ -4,6 +4,27 @@ $green:   #007056 !default;
 $primary:       $blue !default;
 $secondary:    #00B4FF!default;
 $font-family: 'Assistant', sans-serif;
+
+@font-face {
+font-family: $font-family;
+src: url('../../fonts/Assistant/Assistant-Regular.woff') format('woff');
+font-weight: normal;
+font-style: normal;
+}
+@font-face {
+font-family: $font-family;
+src: url('../../fonts/Assistant/Assistant-Bold.woff') format('woff');
+font-weight: bold;
+
+}
+@font-face {
+font-family: $font-family;
+src: url('../../fonts/Assistant/Assistant-Light.woff') format('woff');
+font-weight:lighter;
+font-style: normal;
+}
+
+
 $white : rgba(255,255,255,0.9);
 @import "../assets/bootstrap/scss/functions";
 @import "../assets/bootstrap/scss/variables";
@@ -19,7 +40,113 @@ $white : rgba(255,255,255,0.9);
 //@import "../assets/bootstrap/scss/_buttons";
 @import "../assets/bootstrap/scss/bootstrap";
 
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+ font-family: 'Assistant', sans-serif;  
+}
+
+h1 {
+
+font-weight: bold;
+	font-size: 3em;
+	margin:0.1 0 0.67em 0;
+}
+h2 {
+    font-family: 'Assistant', sans-serif;  
+    font-weight: bold;  
+    font-size: 2.4em; 
+}
+.headline {
+position:relative;
+}
+.headline:after {
+content: ''; position: absolute;
+top: calc(100% + 5px);width: 10%;left: 50%;height: 0px;
+border-bottom:0.3px solid $white;
+   transform: translateX(-50%);
+
+   opacity:0.1;
+}
+.subheadline {
+  font-family: 'Assistant', sans-serif;  
+font-weight:lighter;  
+position:relative;
+line-height:1.4;
+	font-size: 0.8em;
+	margin: 0;
+
+}
+.subheadline:before {
+content: ''; position: absolute;
+bottom: calc(100% + 5px);width: 1%;left: 50%;height: 0.1px;
+border-bottom:0.1px solid $white;
+   transform: translateX(-50%);
+    opacity:0.1;
+}
+
 /* navigation */
+.main-navigation ul {
+	display: none;
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
+}
+
+
+.main-navigation ul ul {
+	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+	float: left;
+	position: absolute;
+	top: 100%;
+	left: -999em;
+	z-index: 99999;
+}
+
+.main-navigation ul ul ul {
+	left: -999em;
+	top: 0;
+}
+
+.main-navigation ul ul li:hover > ul,
+.main-navigation ul ul li.focus > ul {
+	display: block;
+	left: auto;
+}
+
+.main-navigation ul ul a {
+	width: 200px;
+}
+
+.main-navigation ul li:hover > ul,
+.main-navigation ul li.focus > ul {
+	left: auto;
+}
+
+.main-navigation li {
+	position: relative;
+}
+
+.main-navigation a {
+	display: block;
+	text-decoration: none;
+}
+/* Small menu. */
+.menu-toggle,
+.main-navigation.toggled ul {
+	display: block;
+}
+
+      @include media-breakpoint-up(md) { 
+
+
+	.menu-toggle {
+		display: none;
+	}
+    	.main-navigation ul {
+		display: flex;
+	}
+}
+
 
 
  .main-navigation.toggled ul {
@@ -188,8 +315,14 @@ div {
 section {
 padding-top:100px;
 padding-bottom:150px;
+min-height:100vh;
+-webkit-box-shadow: inset 2px 8px 51px -6px rgba(255,255,255,0.39);
+-moz-box-shadow: inset 2px 8px 51px -6px rgba(255,255,255,0.39);
+box-shadow: inset 2px 8px 51px -6px rgba(255,255,255,0.39);
 
-
+}
+.hero-image {
+    min-height:33vh;
 }
 }
 
@@ -383,43 +516,58 @@ div {
 
 .f-timeline {
     list-style:none;
+    margin:0px;
+    padding:0px;
 
 
 .f-timeline-event {
+       text-align:center;
+       margin: 2.5em auto;
+        position:relative;
+     @include media-breakpoint-up(md) {  
     line-height: 4.4em;  
         height: 4.4em;
-       margin: 2.5em auto;
-           position:relative;
+             text-align:left;
+     }
+
 span {
 
+ @include media-breakpoint-up(md) {  
     padding-left:2em;
-
+  
+  
+ }
 }
 .f-timeline-date {
     border:solid 0.1px;
     border-color:$white;
     background:none;
-    width: 4.4em;
-    height: 4.4em;
-    line-height: 4.4em;
-                   display: inline-block;
-    text-align: center;
-    margin-right:4.4em;
-    position:relative; 
 
-       @include media-breakpoint-down(md) { 
+         width: 4.4em;
+    height: 4.4em;      
+    text-align: center;
+   
+    position:relative; 
     display:block;
     margin-right:auto;
     margin-left:auto;
-
+    line-height: 4.4em;
+    margin-bottom:2.4em;
+       @include media-breakpoint-up(md) { 
+       display: inline-block;
+    width: 4.4em;
+    height: 4.4em;
+    line-height: 4.4em;
+     margin-right:4.4em;
        }
-
-
 
 }
 }
  .f-timeline-event:not(:last-child) .f-timeline-date:after {
-    position: absolute;
+
+            @include media-breakpoint-up(md) { 
+
+position: absolute;
     height: 2.5em;
     width: 0.1em;
 
@@ -429,6 +577,8 @@ span {
     right: 0px;
     bottom: 0px;
     transform: translateY(100%);
+       }
+    
     }
 
 }
@@ -437,7 +587,41 @@ span {
     padding: 10px 0px;
 }
 
+.entry-header,
+.page-content,
+.entry-content,
+.entry-summary {
+	margin: 1.5em 0 0;
+}
 
+.product .entry-header {
+                @include media-breakpoint-up(md) { 
+    margin-bottom:100px;
+                }
+}
+
+.product .entry-header .container {
+    position:relative;
+                @include media-breakpoint-up(md) { 
+    min-height:33vh;
+    .row {
+       min-height:33vh;  
+       div {
+           margin-top: auto;
+       }
+    }
+      }
+}
+
+.product .entry-header .container .post-thumbnail {
+       @include media-breakpoint-up(md) {  
+    position:absolute;
+    right:50px;
+    bottom:-50px;
+    height:240px;
+    width:360px;
+}
+}
 
 
 

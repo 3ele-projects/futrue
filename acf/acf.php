@@ -64,6 +64,76 @@ if( function_exists('acf_add_local_field_group') ):
                 'delay' => 0,
             ),
             array(
+                'key' => 'field_5f3cee223d9f0',
+                'label' => 'CTA Button',
+                'name' => 'cta_button',
+                'type' => 'true_false',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'message' => 'Möchtest du einen Call to Action Button?',
+                'default_value' => 1,
+                'ui' => 0,
+                'ui_on_text' => '',
+                'ui_off_text' => '',
+            ),
+            array(
+                'key' => 'field_5f3cef0706fd5',
+                'label' => 'link',
+                'name' => 'link',
+                'type' => 'url',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_5f3cee223d9f0',
+                            'operator' => '==',
+                            'value' => '1',
+                        ),
+                    ),
+                ),
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+            ),
+            array(
+                'key' => 'field_5f3cef1206fd6',
+                'label' => 'linktext',
+                'name' => 'linktext',
+                'type' => 'text',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_5f3cee223d9f0',
+                            'operator' => '==',
+                            'value' => '1',
+                        ),
+                    ),
+                ),
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+            ),
+            array(
                 'key' => 'field_5f3a54ff0fe58',
                 'label' => 'font-color',
                 'name' => 'font-color',
@@ -347,6 +417,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'max' => '',
                 'return_format' => 'object',
             ),
+            
         ),
         'location' => array(
             array(
@@ -367,6 +438,123 @@ if( function_exists('acf_add_local_field_group') ):
         'description' => '',
     ));
     
+    if( function_exists('acf_add_local_field_group') ):
+
+        acf_add_local_field_group(array(
+            'key' => 'group_5f3d449ebbdee',
+            'title' => 'cpt_product',
+            'fields' => array(
+                array(
+                    'key' => 'field_5f3d44b4b3501',
+                    'label' => 'subheadline',
+                    'name' => 'subheadline',
+                    'type' => 'text',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => '',
+                    'placeholder' => '',
+                    'prepend' => '',
+                    'append' => '',
+                    'maxlength' => '',
+                ),array(
+                    'key' => 'field_5f3cee223d9f0',
+                    'label' => 'CTA Button',
+                    'name' => 'cta_button',
+                    'type' => 'true_false',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'message' => 'Möchtest du einen Call to Action Button?',
+                    'default_value' => 1,
+                    'ui' => 0,
+                    'ui_on_text' => '',
+                    'ui_off_text' => '',
+                ),
+                array(
+                    'key' => 'field_5f3cef0706fd5',
+                    'label' => 'link',
+                    'name' => 'link',
+                    'type' => 'url',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => array(
+                        array(
+                            array(
+                                'field' => 'field_5f3cee223d9f0',
+                                'operator' => '==',
+                                'value' => '1',
+                            ),
+                        ),
+                    ),
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => '',
+                    'placeholder' => '',
+                ),
+                array(
+                    'key' => 'field_5f3cef1206fd6',
+                    'label' => 'linktext',
+                    'name' => 'linktext',
+                    'type' => 'text',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => array(
+                        array(
+                            array(
+                                'field' => 'field_5f3cee223d9f0',
+                                'operator' => '==',
+                                'value' => '1',
+                            ),
+                        ),
+                    ),
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => '',
+                    'placeholder' => '',
+                    'prepend' => '',
+                    'append' => '',
+                    'maxlength' => '',
+                ),
+            ),
+            'location' => array(
+                array(
+                    array(
+                        'param' => 'post_type',
+                        'operator' => '==',
+                        'value' => 'product',
+                    ),
+                ),
+            ),
+            'menu_order' => 0,
+            'position' => 'normal',
+            'style' => 'default',
+            'label_placement' => 'top',
+            'instruction_placement' => 'label',
+            'hide_on_screen' => '',
+            'active' => true,
+            'description' => '',
+        ));
+        
+        endif;
+
+
     acf_add_local_field_group(array(
         'key' => 'group_5f3ba8b90dcb7',
         'title' => 'testimonial-block',
@@ -603,8 +791,8 @@ if( function_exists('acf_add_local_field_group') ):
                     'id' => '',
                 ),
                 'choices' => array(
-                    'order-0' => 'Content Links',
-                    'order-1' => 'Content Rechts',
+                    'mr-md-auto' => 'Content Links',
+                    'ml-md-auto' => 'Content Rechts',
                 ),
                 'default_value' => false,
                 'allow_null' => 0,

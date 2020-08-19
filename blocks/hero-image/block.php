@@ -49,10 +49,11 @@ $anker_id = get_field('anker_id');
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+    <span class="subheadline small"><?php echo $subheadline; ?></span>
         <h1><?php echo $headline; ?></h1>
-        <p class="h2"><?php echo $subheadline; ?></p>
+        <?php echo $description; ?>
         <?php if ( get_field( 'cta_button' ) == 1 ) : ?>
-<a href="<?php the_field( 'link' ); ?>" class=" m-3 btn btn-primary btn-lg"><?php the_field( 'linktext' ); ?> </a>
+<a href="<?php the_field( 'link' ); ?>" class="m-md-3 btn btn-primary btn-lg"><?php the_field( 'linktext' ); ?> </a>
 	<?php endif; ?>
   </div>
       </div>

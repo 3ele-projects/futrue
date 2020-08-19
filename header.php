@@ -61,6 +61,7 @@
 					array(
 						'theme_location' => 'menu-1',
 						'menu_id'        => 'primary-menu',	
+						'menu_class'        => 'primary-menu'
 					)
 				);
 				
@@ -70,6 +71,7 @@
 					array(
 						'theme_location' => 'home-menu',
 							'menu_id'        => 'home-menu',
+							'menu_class'        => 'primary-menu'
 				
 					)
 				);
