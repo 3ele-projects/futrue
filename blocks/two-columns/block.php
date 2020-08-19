@@ -61,7 +61,9 @@ $col_align = get_field('align');
   </section>   
     <style type="text/css">
         #<?php echo $id; ?> {
+        
             background: <?php echo $background_color; ?>;
+   
        
         }
     </style>

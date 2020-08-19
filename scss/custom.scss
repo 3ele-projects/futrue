@@ -188,7 +188,7 @@ div {
 section {
 padding-top:100px;
 padding-bottom:150px;
-box-shadow: inset 0px -3px 50px -20px rgba(255, 255, 255, 0.15);
+
 
 }
 }
@@ -431,6 +431,10 @@ span {
     transform: translateY(100%);
     }
 
+}
+
+.section .container p {
+    padding: 10px 0px;
 }
 
 

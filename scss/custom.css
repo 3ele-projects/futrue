@@ -6622,7 +6622,7 @@ a.text-dark:hover, a.text-dark:focus {
 .entry-content section {
   padding-top: 100px;
   padding-bottom: 150px;
-  box-shadow: inset 0px -3px 50px -20px rgba(255, 255, 255, 0.15); }
+  background: linear-gradient(to bottom, #7927b2, #fb3182); }
 
 .block-header {
   color: rgba(255, 255, 255, 0.9); }
@@ -6791,5 +6791,8 @@ a.text-dark:hover, a.text-dark:focus {
     right: 0px;
     bottom: 0px;
     transform: translateY(100%); }
+
+.section .container p {
+  padding: 10px 0px; }
 
 /*# sourceMappingURL=custom.css.map */
