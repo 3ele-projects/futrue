@@ -149,6 +149,21 @@ if( function_exists('acf_add_local_field_group') ):
                 'default_value' => '',
             ),
             array(
+                'key' => 'field_5f3d4dc02ee4c',
+                'label' => 'background-color',
+                'name' => 'background-color',
+                'type' => 'color_picker',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '',
+            ),
+            array(
                 'key' => 'field_5f3a5f31f680f',
                 'label' => 'anker_id',
                 'name' => 'anker_id',
