@@ -56,8 +56,14 @@ $col_align = get_field('align');?>
 
 <?php the_field( 'description' ); ?>
 <?php if ( get_field( 'cta_button' ) == 1 ) : ?>
-<a href="<?php the_field( 'link' ); ?>" class="m-md-3 btn btn-primary btn-lg"><?php the_field( 'linktext' ); ?> </a>
-	<?php endif; ?>
+
+<div class="row">
+<div class="col-12 text-sm-left mt-5">
+<a href="<?php the_field( 'link' ); ?>" class=" btn btn-primary btn-lg"><?php the_field( 'linktext' ); ?> </a>
+</div> 
+</div> 
+
+<?php endif; ?>
 </div>
 
 </div>
@@ -72,8 +78,14 @@ else {
 
 <?php the_field( 'description' ); ?>
 <?php if ( get_field( 'cta_button' ) == 1 ) : ?>
-<a href="<?php the_field( 'link' ); ?>" class="m-md-3 btn btn-primary btn-lg"><?php the_field( 'linktext' ); ?> </a>
-	<?php endif; ?>
+
+<div class="row">
+<div class="col-12 text-sm-left mt-5">
+<a href="<?php the_field( 'link' ); ?>" class=" btn btn-primary btn-lg"><?php the_field( 'linktext' ); ?> </a>
+</div> 
+</div> 
+
+<?php endif; ?>
 </div>
 <div class="col-md-6  <?php // echo $col_align;?>">
 <?php $image = get_field( 'image' ); ?>

@@ -83,10 +83,17 @@ $anker_id = get_field('anker_id');
       </div>
     </div>
     <?php endwhile; ?>
-    <?php if ( get_field( 'cta_button' ) == 1 ) : ?>
-<a href="<?php the_field( 'link' ); ?>" class="m-md-3 btn btn-primary btn-lg"><?php the_field( 'linktext' ); ?> </a>
-	<?php endif; ?>
+
   </div>
+  <?php if ( get_field( 'cta_button' ) == 1 ) : ?>
+
+<div class="row">
+<div class="col-12 text-sm-left text-lg-center mt-5">
+<a href="<?php the_field( 'link' ); ?>" class="btn btn-primary btn-lg"><?php the_field( 'linktext' ); ?> </a>
+</div> 
+</div> 
+
+<?php endif; ?>
   </div>
 </section>
 <script>

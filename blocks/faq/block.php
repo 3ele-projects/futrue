@@ -35,59 +35,73 @@ $background_color = get_field('background-color');
 $font_color = get_field('font-color');
 $anker_id = get_field('anker_id');
 ?>
-<style type="text/css">
-	#<?php echo $anker_id; ?> {
-    background: <?php echo $background_color; ?>;
-  }
-    #<?php echo $anker_id; ?> .block-header .description,
-        #<?php echo $anker_id; ?> .block-header .subheadline,
-        #<?php echo $id ; ?> {
-          color:black!important;
-    
-	}
-</style>
+
 <?php if ( have_rows( 'faq_group' ) ) : ?>
 <section id="<?php echo $id ; ?>"  class="<?php echo esc_attr( $classes ); ?>">
+<div id="<?php  echo $anker_id ; ?>" class="container">
+
+<div id="accordion_<?php  echo $id ; ?>">
+<div class="block-header">
+<p class="subheadline"><?php echo $subheadline;?></p>
+<h2 class="headline"><?php echo $headline;?></h2>
+<p class="description"><?php echo $description;?></p>
+</div>
+<?php $counter = 0; ?>
+		<?php while ( have_rows( 'faq_group' ) ) : the_row();   $counter++ ?>
 
 
-<div class="container">
-<div id="accordion-<?php echo $id ; ?>">
 
 
-		<?php while ( have_rows( 'faq_group' ) ) : the_row(); ?>
-
-    <?php // var_dump($row_id);?>
-
-    <?php  $field_ID = get_sub_field_object('question')['ID']; ?>
   <div class="card">
-    <div class="card-header" id="heading-<?php  echo $field_ID;?>">
-      <h5 class="mb-0">
-        <div class="accordion-btn collapsed" data-toggle="collapse" data-target="#collapse-<?php  echo $field_ID;?>" aria-expanded="false" aria-controls="collapse-<?php  echo $field_ID;?>">
-  			<?php the_sub_field( 'question' ); ?>
+    <div class="card-header" id="heading-<?php  echo $counter;?>">
+        <div class="accordion-btn collapsed" data-toggle="collapse" data-target="#collapse-<?php  echo $counter;?>" aria-expanded="false" aria-controls="collapse-<?php  echo $counter;?>">
+        <span class="h5 mb-0">
+        <?php the_sub_field( 'question' ); ?>
+        </span>
         </div>
-      </h5>
+
     </div>
-    <div id="collapse-<?php  echo $field_ID;?>" class="collapse" aria-labelledby="heading-<?php  echo $field_ID;?>" data-parent="#accordion">
+    <div id="collapse-<?php  echo $counter;?>" class="collapse" aria-labelledby="heading-<?php  echo $counter;?>" data-parent="#accordion_<?php  echo $id ; ?>">
       <div class="card-body">
       <?php the_sub_field( 'answer' ); ?>
       </div>
     </div>    
+    </div>    
     <?php endwhile; ?>
-	<?php else : ?>
+
+
+ 
+
+    </div>
+    <?php if ( get_field( 'cta_button' ) == 1 ) : ?>
+
+      <div class="row">
+ <div class="col-12  text-sm-left text-lg-center mt-5">
+<a href="<?php the_field( 'link' ); ?>" class="m-md-3  btn btn-primary btn-lg"><?php the_field( 'linktext' ); ?> </a>
+</div> 
+</div> 
+
+	<?php endif; ?>
+    </div>
+</section>
+<style type="text/css">
+	#<?php echo $id; ?> {
+    background: <?php echo $background_color; ?>;
+  }
+    #<?php echo $id; ?> .block-header .description,
+        #<?php echo $id; ?> .block-header .subheadline,
+        #<?php echo $id ; ?> {
+          color:$font_color!important;
+    
+	}
+</style>
+<script>
+  jQuery(document).ready(function( $ ) {
+    $("#accordion_<?php  echo $id ; ?>  .accordion-btn:first").trigger("click");
+  });
+
+  </script>
+<?php else : ?>
 		<?php // no rows found ?>
 
-    </div>  
-    </div>  
-    </div>  
-
-</section>
-<script>
-jQuery(document).ready(function( $ ) {
-  $("#accordion-<?php echo $id ; ?> .accordion-btn:first").trigger("click");
-
-
-
-});
-
-</script>
-<?php endif; ?>
+    <?php endif; ?>
