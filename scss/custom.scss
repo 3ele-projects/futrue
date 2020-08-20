@@ -41,6 +41,38 @@ $white : rgba(255,255,255,0.9);
 @import "../assets/bootstrap/scss/bootstrap";
 
 
+/* Document
+	 ========================================================================== */
+
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+html {
+	line-height: 1.15;
+	-webkit-text-size-adjust: 100%;
+    width:100vw;
+    overflow-x:hidden;
+}
+
+/* Sections
+	 ========================================================================== */
+
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+	margin: 0;
+}
+
+/**
+ * Render the `main` element consistently in IE.
+ */
+main {
+	display: block;
+}
+
+
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
  font-family: 'Assistant', sans-serif;  
 }
@@ -155,10 +187,12 @@ border-bottom:0.1px solid $white;
 	top: 70px;
 	z-index: 9999;
 	background: white;
-	width: 100vw;
+	width: 101vw;
 	left: 0px;
 	right: 0px;
 	height:100vh;
+    padding-left:15px;
+
 
 }
 
@@ -216,19 +250,16 @@ margin-top: auto;
         .menu .nav-menu {
 
   
-              padding:0px;
+            padding:0px;
             padding-top:60px;
+  
             width:100%;
-          position:Absolute;
-            min-height:33vh;
-         height:100vh;
+            position:absolute;
+            height:100vh;
             top:60px;
             left:0px;
             right:0px;
-                    
-                    li{
-
-  
+            li{
             padding-right:10px;
             padding-bottom:20px;
            
@@ -244,8 +275,8 @@ margin-top: auto;
 
         .menu-toggle {
             position:absolute;
-            right:20px;
-            top:20px;
+        right: 10px;
+top: 10px;
         }
         a {position: relative;
         color: $black;
@@ -274,10 +305,21 @@ div {
     .menu {
     display:block;
     list-style:none;
+    margin:0px;
+ 
+       padding:0px; 
+        @include media-breakpoint-up(md) {   
+     
+        
+        }
   
-    margin-left:auto;
+
     
     li {
+           @include media-breakpoint-up(md) {   
+          padding:0.2rem 0.4rem; 
+        }
+  
         padding:0.5rem 0.5rem;
         display:inline-block;
         a {

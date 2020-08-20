@@ -48,6 +48,7 @@
 				array(
 					'theme_location' => 'sub-footer-menu',
 					'menu_id'        => 'sub-footer-menu',	
+					'menu_class'        => 'menu ml-md-auto',	
 				)
 			);
 		?>

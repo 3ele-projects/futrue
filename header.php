@@ -34,6 +34,7 @@
 				array(
 					'theme_location' => 'sub-header-menu',
 					'menu_id'        => 'sub-header-menu',	
+					'menu_class'        => 'menu ml-md-auto',	
 				)
 			);
 		?>
@@ -51,7 +52,7 @@
 ?>
 		<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span class="sr-only">Navigation ein-/ausblenden</span>
 			<span class="icon-bars-button">
-			<i class="fas fa-bars"></i>
+			<i class="fas fa-2x fa-bars"></i>
               </span>
    
    </button>

@@ -6476,6 +6476,32 @@ a.text-dark:hover, a.text-dark:focus {
   .table-bordered th,
   .table-bordered td {
     border: 1px solid #ddd !important; } }
+/* Document
+	 ========================================================================== */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  width: 100vw;
+  overflow-x: hidden; }
+
+/* Sections
+	 ========================================================================== */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0; }
+
+/**
+ * Render the `main` element consistently in IE.
+ */
+main {
+  display: block; }
+
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: 'Assistant', sans-serif; }
 
@@ -6577,10 +6603,11 @@ h2 {
   top: 70px;
   z-index: 9999;
   background: white;
-  width: 100vw;
+  width: 101vw;
   left: 0px;
   right: 0px;
-  height: 100vh; }
+  height: 100vh;
+  padding-left: 15px; }
 
 .main-navigation.toggled li {
   display: block;
@@ -6621,8 +6648,7 @@ h2 {
       padding: 0px;
       padding-top: 60px;
       width: 100%;
-      position: Absolute;
-      min-height: 33vh;
+      position: absolute;
       height: 100vh;
       top: 60px;
       left: 0px;
@@ -6634,8 +6660,8 @@ h2 {
     position: relative; }
   #site-navigation .menu-toggle {
     position: absolute;
-    right: 20px;
-    top: 20px; }
+    right: 10px;
+    top: 10px; }
   #site-navigation a {
     position: relative;
     color: #000;
@@ -6675,11 +6701,16 @@ h2 {
     .pre-header div .menu {
       display: block;
       list-style: none;
-      margin-left: auto; }
+      margin: 0px;
+      padding: 0px; }
       .sub-footer div .menu li,
       .pre-header div .menu li {
         padding: 0.5rem 0.5rem;
         display: inline-block; }
+        @media (min-width: 768px) {
+          .sub-footer div .menu li,
+          .pre-header div .menu li {
+            padding: 0.2rem 0.4rem; } }
         .sub-footer div .menu li a,
         .pre-header div .menu li a {
           font-size: 0.875rem; }

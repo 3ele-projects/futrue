@@ -60,7 +60,7 @@ $anker_id = get_field('anker_id');
    <small> <?php the_field('position', $post->ID); ?></small>
   </div>
   </div>
-        <div class="card-body t-text">
+        <div class="card-body t-text text-justify">
         <small><?php the_field('content', $post->ID); ?></small>
   </div>
       </div>

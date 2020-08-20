@@ -453,7 +453,100 @@ if( function_exists('acf_add_local_field_group') ):
         'description' => '',
     ));
     
-    if( function_exists('acf_add_local_field_group') ):
+    acf_add_local_field_group(array(
+        'key' => 'group_5f3e44b94b028',
+        'title' => 'cpt_job',
+        'fields' => array(
+            array(
+                'key' => 'field_5f3cee223d9f0',
+                'label' => 'CTA Button',
+                'name' => 'cta_button',
+                'type' => 'true_false',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'message' => 'Möchtest du einen Call to Action Button?',
+                'default_value' => 1,
+                'ui' => 0,
+                'ui_on_text' => '',
+                'ui_off_text' => '',
+            ),
+            array(
+                'key' => 'field_5f3cef0706fd5',
+                'label' => 'link',
+                'name' => 'link',
+                'type' => 'url',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_5f3cee223d9f0',
+                            'operator' => '==',
+                            'value' => '1',
+                        ),
+                    ),
+                ),
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+            ),
+            array(
+                'key' => 'field_5f3cef1206fd6',
+                'label' => 'linktext',
+                'name' => 'linktext',
+                'type' => 'text',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_5f3cee223d9f0',
+                            'operator' => '==',
+                            'value' => '1',
+                        ),
+                    ),
+                ),
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+            ),
+
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'job',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+        'position' => 'side',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => '',
+        'active' => true,
+        'description' => '',
+    ));
 
         acf_add_local_field_group(array(
             'key' => 'group_5f3d449ebbdee',
@@ -567,7 +660,7 @@ if( function_exists('acf_add_local_field_group') ):
             'description' => '',
         ));
         
-        endif;
+     
 
 
     acf_add_local_field_group(array(

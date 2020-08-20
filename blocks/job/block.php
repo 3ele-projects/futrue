@@ -79,28 +79,27 @@ $anker_id = get_field('anker_id');
     </div>
     <div id="collapse-<?php  the_ID();?>" class="collapse" aria-labelledby="heading-<?php   the_ID();?>" data-parent="#accordion">
       <div class="card-body">
-      <?php the_field( 'job_description' , get_the_ID()); ?>
+      <?php the_content();?>
+      <?php if ( get_field( 'cta_button', get_the_ID() ) == 1 ) : ?>
+
+<div class="row">
+<div class="col-12 text-sm-center text-lg-left m-3">
+<a href="<?php the_field( 'link',  get_the_ID() ); ?>" class="btn btn-primary btn-lg"><?php the_field( 'linktext' , get_the_ID()); ?> </a>
+</div> 
+</div> 
+
+<?php endif; ?>
       </div>
     </div>
     <?php endwhile; ?>
 
   </div>
-  <?php if ( get_field( 'cta_button' ) == 1 ) : ?>
 
-<div class="row">
-<div class="col-12 text-sm-left text-lg-center mt-5">
-<a href="<?php the_field( 'link' ); ?>" class="btn btn-primary btn-lg"><?php the_field( 'linktext' ); ?> </a>
-</div> 
-</div> 
-
-<?php endif; ?>
   </div>
 </section>
 <script>
 jQuery(document).ready(function( $ ) {
   $("#accordion .accordion-btn:first").trigger("click");
-
-
 
 });
 

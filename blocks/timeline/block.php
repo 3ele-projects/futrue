@@ -56,7 +56,6 @@ $anker_id = get_field('anker_id');
         <div class="col-sm-9">
         <ul class="f-timeline"> 
         <?php $rows = get_field('timeline');?>
-
         <?php  foreach( $rows as $row ): ?>
     <li class="f-timeline-event">	<i class="f-timeline-date circle">	<?php echo $row['year']; ?></i>  <span><?php echo $row['event']; ?> </span> </li>         
 		<?php endforeach; ?>
